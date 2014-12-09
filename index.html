@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>もっと読む！</title>
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+    <h1>もっと読む</h1>
+    <ul id="tweets">
+    </ul>
+    <p id="loading" style="display:none;">loading...</p>
+    <input type="button" id="more" value="もっと読む">
+    <script>
+        $(function() {
+
+            $('#more').click(function() {
+                $('#loading').show();
+                $.get('twitter.php', {
+                }, function(rs) {
+                    $('#loading').hide();
+                    $(rs).appendTo('#tweets');
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
